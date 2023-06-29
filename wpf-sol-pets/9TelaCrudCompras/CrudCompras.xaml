@@ -1,0 +1,113 @@
+﻿<Window x:Class="wpf_sol_pets._9TelaCrudCompras.CrudCompras"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_sol_pets._9TelaCrudCompras"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow"
+        Title="Informações de Compras" MaxHeight="400" MinHeight="400" Height="400" MaxWidth="600"
+        Width="600" MinWidth="600"  Background="#FF77B5E8">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="3" Margin="10,3,10,10">
+            <TextBlock FontSize="17" Text="Informe os dados da compra"/>
+        </StackPanel>
+        <TextBlock FontSize="10" Text="OBS: Atente-se aos dados obrigatórios marcados com o *" Grid.Row="0" Grid.Column="0"
+                   HorizontalAlignment="Left" Grid.ColumnSpan="3" Margin="10,20,10,10"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Data da Compra: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtDhCompra" MaxLength="50" Width="250" Height="30" FontSize="14"
+                     ToolTip="Adicione uma data válida. Ex: 21/03/2023"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Fornecedor: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtFornecedor" MaxLength="50" Width="250" Height="30" FontSize="14"
+                     ToolTip="Adicione um fornecedor. OBS: Obrigatório informar um fornecedor já cadastrado."/>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Valor da Compra: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtValorCompra" MaxLength="8" Width="250" Height="30" FontSize="14"
+                     ToolTip="Adicione um número decimal. Ex: 1200.50"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Produto comprado: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtProduto" MaxLength="8" Width="250" Height="30" FontSize="14"
+                     ToolTip="ISBN ou Nome do Produto comprado. OBS: Obrigatório informar um produto já cadastrado"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Qtde Produto da Compra: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtQtdeCompra" MaxLength="8" Width="250" Height="30" FontSize="14"
+                     ToolTip="Adicione um número inteiro maior ou igual a 0. OBS: Se já tiver cadastrado o produto e a quantidade comprada, informe 0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Email funcionário: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtUsuario" MaxLength="8" Width="250" Height="30" FontSize="14"
+                     ToolTip="Informe o seu email de funcionário!"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="0">
+            <Button x:Name="btnVoltar" Width="70" Height="30" HorizontalAlignment="Left" Content="Voltar"
+                    Margin="50,10"
+                    ToolTip="Volta à tela anterior" Background="#FF5379DC" Cursor="Hand"/>
+        </StackPanel>
+
+        <StackPanel x:Name="stackBtnCadastrar" Grid.Row="7" Grid.Column="3" Visibility="Hidden">
+            <Button x:Name="btnCadastrar" Width="70" Height="30" HorizontalAlignment="Center" Content="Avançar" Margin="0,10"
+                    ToolTip="Cadastrar as informações" Background="#FF5379DC" Cursor="Hand" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackBtnEditar" Grid.Row="7" Grid.Column="3" Visibility="Hidden">
+            <Button x:Name="btnEditar" Width="70" Height="30" HorizontalAlignment="Center" Content="Avançar" Margin="0,10"
+                    ToolTip="Editar as informações" Background="#FF5379DC" Cursor="Hand" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackBtnExcluir" Grid.Row="7" Grid.Column="3" Visibility="Visible">
+            <Button x:Name="btnExcluir" Width="70" Height="30" HorizontalAlignment="Center" Content="Avançar" Margin="0,10"
+                    ToolTip="Excluir as informações" Background="#FF5379DC" Cursor="Hand" />
+        </StackPanel>
+    </Grid>
+</Window>

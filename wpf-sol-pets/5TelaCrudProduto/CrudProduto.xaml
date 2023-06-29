@@ -1,0 +1,215 @@
+﻿<Window x:Class="wpf_sol_pets._5TelaCrudProduto.CrudProduto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_sol_pets._5TelaCrudProduto" xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow"
+        Title="Informações de Produto" MinHeight="650" Height="650" MaxHeight="650" 
+        MinWidth="770" Width="770" MaxWidth="770" Background="#FF77B5E8">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="10,3,10,10">
+            <TextBlock FontSize="17" Text="Informe os dados do produto"/>
+        </StackPanel>
+        <TextBlock FontSize="10" Text="OBS: Atente-se aos dados obrigatórios marcados com o *" Grid.Row="0" Grid.Column="1"
+                   HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="10,25,10,10"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Código de barras: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoIsbn" MaxLength="200" Width="250" Height="30" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Marca: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoMarca" MaxLength="50" Width="200" Height="30" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Nome produto: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoNomeProd" MaxLength="100" Width="250" Height="30" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Categoria: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left">
+            <ComboBox x:Name="comboCategorias" Cursor="Hand" Width="200" Height="30"
+                      VerticalContentAlignment="Center" SelectionChanged="SetCategoria"
+                      ToolTip="Se a categoria não aparecer na lista, realize seu cadastro!">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding TipoCategoria}" 
+                                       ToolTip="{Binding DescricaoCategoria}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Nome fornecedor: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left">
+            <ComboBox x:Name="ComboFornecedores" Cursor="Hand" Width="250" Height="30"
+                      VerticalContentAlignment="Center" SelectionChanged="SetFornecedor"
+                      ToolTip="Se o fornecedor não aparecer na lista, realize seu cadastro!">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" x:Name="fornecedores">
+                            <TextBlock Text="{Binding NomeFornecedor}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Valor unit. venda: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoValUnitVenda" MaxLength="20" Width="250" Height="30" FontSize="14" 
+                     ToolTip="Digite um valor decimal. Ex: 50.45. Obs: Para produtos vendido por quilo, incluir valor 0.0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Valor unit. custo: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoValUnitCusto" MaxLength="20" Width="250" Height="30" FontSize="14" ToolTip="Digite um número decimal. Ex: 50.45"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Quantidade: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoQuantidade" MaxLength="20" Width="100" Height="30" FontSize="14" ToolTip="Digite um número inteiro. Ex: 50"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Peso produto (KG): *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoPesoProd" MaxLength="20" Width="100" Height="30" FontSize="14" ToolTip="Digite o peso do produto como um número decimal. Ex: 25.00"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Data de Validade: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoDhValidade" MaxLength="20" Width="100" Height="30" FontSize="14" ToolTip="Digite uma data válida. Ex: 25/03/2025"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Vendido por quilo: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left">
+            <ComboBox Cursor="Hand" SelectedIndex="0" Height="30" Width="50" ToolTip="Marcar 'Sim' somente para produtos vendido por quilo. Ex: Ração que o cliente solicitar 3kg."
+                      SelectionChanged="SetVendaPorQuilo">
+                <ComboBoxItem x:Name="vendidoPorQuiloS">Sim</ComboBoxItem>
+                <ComboBoxItem x:Name="vendidoPorQuiloN" IsSelected="True">Não</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Idade aplicável: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="3" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoIdadeApp" MaxLength="20" Width="100" Height="30" FontSize="14" ToolTip="Digite uma idade em anos (5.0). Para meses 0.3 (3 meses)"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Peso (KG) aplicável: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoPesoApp" MaxLength="20" Width="100" Height="30" FontSize="14" ToolTip="Digite um número decimal. Ex: 25.00 ou 25.50"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="12" Grid.Column="0" HorizontalAlignment="Right" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <TextBlock FontSize="14" Text="Imagem produto: *"/>
+        </StackPanel>
+        <StackPanel Grid.Row="12" Grid.Column="1" HorizontalAlignment="Left">
+            <TextBox x:Name="txtCampoImagem" MaxLength="20" Width="250" Height="30" FontSize="14"
+                     ToolTip="Digite o caminho da imagem ou clique em 'Procurar'"/>
+        </StackPanel>
+        <StackPanel Grid.Row="12" Grid.Column="2" HorizontalAlignment="Center" Margin="10,0"
+                    Grid.ColumnSpan="1" VerticalAlignment="top">
+            <Button x:Name="btnBuscaImagem" Content="Procurar" Width="90" Height="30"
+                    ToolTip="Procurar imagem no computador" Click="BuscarImagem"
+                    Background="#FF5379DC" Cursor="Hand"/>
+        </StackPanel>
+        <StackPanel Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="4" HorizontalAlignment="Left">
+            <Image Width="190" Height="110" Margin="30" x:Name="imageProduto"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="13" Grid.Column="0">
+            <Button x:Name="btnVoltar" Width="70" Height="30" HorizontalAlignment="Right" Content="Voltar" Margin="10"
+                    ToolTip="Voltar a tela anterior" Background="#FF5379DC" Cursor="Hand" 
+                    Click="VoltarTelaAnterior"/>
+        </StackPanel>
+
+        <StackPanel x:Name="stackBtnCadastrar" Grid.Row="13" Grid.Column="3" Visibility="Visible">
+            <Button x:Name="btnCadastrar" Width="70" Height="30" Content="Avançar" Margin="90,10"
+                    ToolTip="Cadastrar o produto" Background="#FF5379DC" Cursor="Hand" 
+                    Click="CadastrarProduto"/>
+        </StackPanel>
+
+        <StackPanel x:Name="stackBtnEditar" Grid.Row="13" Grid.Column="3" Visibility="Hidden">
+            <Button x:Name="btnEditar" Width="70" Height="30" Content="Avançar" Margin="90,10"
+                    ToolTip="Editar o cadastro do produto" Background="#FF5379DC" Cursor="Hand" />
+        </StackPanel>
+
+        <StackPanel x:Name="stackBtnExcluir" Grid.Row="13" Grid.Column="3" Visibility="Hidden">
+            <Button x:Name="btnExcluir" Width="70" Height="30" Content="Avançar" Margin="90,10"
+                    ToolTip="Excluir o cadastro do produto" Background="#FF5379DC" Cursor="Hand" />
+        </StackPanel>
+        <fa:ImageAwesome Visibility="Hidden" x:Name="Loading" Grid.Column="3" HorizontalAlignment="Right"
+                         Grid.Row="13" Icon="Refresh" Height="20" Width="60" Margin="100,15"/>
+    </Grid>
+</Window>

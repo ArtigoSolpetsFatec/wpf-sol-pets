@@ -1,0 +1,53 @@
+﻿<Window x:Class="wpf_sol_pets._3TelasBusca._3._5BuscarCategoria.BuscarCategoria"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_sol_pets._3TelasBusca._3._5BuscarCategoria" xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow"
+        Title="Buscar Categoria" MinHeight="211" Height="211" MaxHeight="211" MaxWidth="400" Width="400" 
+        MinWidth="400" Background="#FF77B5E8">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,12,10,0">
+            <TextBlock x:Name="TxtInfo" Text="Buscar Categoria por: " FontSize="16"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,10,0,10">
+            <ComboBox Cursor="Hand" SelectedIndex="0" Height="30" VerticalContentAlignment="Top">
+                <ComboBoxItem x:Name="comboNome" IsSelected="True">Nome</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10">
+            <TextBox x:Name="txtCampo" Width="250" Height="30" FontSize="16"
+                     Style="{StaticResource Estilo_Placeholder}" KeyUp="OnEnter"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" x:Name="btnBuscar">
+            <Button  Width="70" Height="30" HorizontalAlignment="Right" Content="Buscar"
+                    ToolTip="Realiza a busca de categoria" Background="#FF5379DC" Cursor="Hand"
+                     Click="BuscaCategoria"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="0">
+            <Button x:Name="btnVoltar" Width="70" Height="30" HorizontalAlignment="Center" Content="Voltar"
+                    ToolTip="Volta a tela anterior" Background="#FF5379DC" Cursor="Hand"
+                    Click="VoltaTelaAnterior"/>
+        </StackPanel>
+
+        <fa:ImageAwesome Visibility="Hidden" x:Name="Loading" Grid.Column="2"
+                         Grid.Row="2" Icon="Refresh" Height="20" Width="60" Margin="110,5,0,0"/>
+    </Grid>
+</Window>
